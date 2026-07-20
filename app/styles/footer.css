@@ -1,0 +1,144 @@
+/* footer.css */
+
+.footer {
+  margin-top: 40px;
+  background: var(--color-black);
+  color: var(--color-white);
+}
+
+.footer__inner {
+  padding: 28px 16px;
+  text-align: center;
+}
+
+.footer__title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: var(--color-white);
+}
+
+.footer__text {
+  font-size: 0.85rem;
+  color: #cbd5e1;
+  margin-bottom: 4px;
+}
+
+.footer__copy {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  font-size: 0.8rem;
+  color: #94a3b8;
+}
+
+/* Trên mobile chỉ hiển thị cột thông tin cửa hàng (giữ nguyên giao diện cũ),
+   2 cột "Liên kết nhanh" và "Kết nối" chỉ bật trên desktop bên dưới. */
+.footer__col--links,
+.footer__col--social {
+  display: none;
+}
+
+/* ==================== DESKTOP (min-width: 1024px) ====================
+   Footer chia nhiều cột để tận dụng không gian màn hình lớn. */
+@media (min-width: 1024px) {
+  .footer__inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+    text-align: left;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 24px 24px;
+    gap: 32px;
+  }
+
+  .footer__col {
+    flex: 1;
+    min-width: 220px;
+  }
+
+  .footer__col--links,
+  .footer__col--social {
+    display: block;
+  }
+
+  .footer__links li {
+    margin-bottom: 10px;
+  }
+
+  .footer__links a:hover {
+    color: var(--color-primary);
+  }
+
+  .footer__social {
+    display: flex;
+    gap: 14px;
+  }
+
+  .footer__social img {
+    width: 26px;
+    height: 26px;
+  }
+
+  .footer__copy {
+    width: 100%;
+    margin-top: 24px;
+    text-align: center;
+  }
+}
+/* ===== Nút liên hệ nổi (Floating Contact Button) ===== */
+.lien-he-float {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 9999;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #ffffff;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  text-decoration: none;
+  animation: lienHeFloatBounce 2s ease-in-out infinite;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.lien-he-float:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+}
+
+.lien-he-float img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+@keyframes lienHeFloatBounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@media (max-width: 480px) {
+  .lien-he-float {
+    width: 50px;
+    height: 50px;
+    right: 15px;
+    bottom: 15px;
+  }
+}
+/* ===== Hết nút liên hệ nổi ===== */
