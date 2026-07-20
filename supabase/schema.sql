@@ -33,26 +33,6 @@ create policy "public read products"
 
 -- 4) Seed 4 sản phẩm hiện có (ảnh trỏ vào thư mục public/img sẵn có).
 insert into products (slug, name, price, category, description, images) values
-(
-  'tui-xach-nu-dor', 'Túi xách nữ Dor', 50000, 'tui-xach',
-  'Túi xách nữ Dor thiết kế trẻ trung, năng động, phù hợp đi học, đi làm hay dạo phố. Chất liệu bền đẹp, form dáng gọn nhẹ, dễ phối với nhiều trang phục.',
-  '["/img/products/1/a (1).jpg","/img/products/1/a (2).jpg","/img/products/1/a (3).jpg","/img/products/1/a (4).jpg","/img/products/1/a (5).jpg","/img/products/1/a (6).jpg","/img/products/1/a (7).jpg"]'::jsonb
-),
-(
-  'tui-xach-mini', 'Túi xách mini', 60000, 'giay-dep',
-  'Túi xách mini nhỏ gọn, tiện lợi mang theo hằng ngày. Thiết kế đơn giản, tinh tế, thích hợp đựng những vật dụng cá nhân cần thiết.',
-  '["/img/products/2/1 (1).jpg","/img/products/2/1 (2).jpg","/img/products/2/1 (3).jpg","/img/products/2/1 (4).jpg","/img/products/2/1 (5).jpg","/img/products/2/1 (6).jpg"]'::jsonb
-),
-(
-  'tui-xach-mau-den', 'Túi xách màu đen', 60000, 'quan-ao',
-  'Túi xách màu đen basic, dễ phối đồ, phù hợp mọi phong cách từ thanh lịch đến năng động. Màu sắc trung tính, bền theo thời gian.',
-  '["/img/products/3/1 (1).jpg","/img/products/3/1 (2).jpg","/img/products/3/1 (3).jpg","/img/products/3/1 (4).jpg"]'::jsonb
-),
-(
-  'tui-xach-do', 'Túi xách đỏ', 60000, 'phu-kien',
-  'Túi xách đỏ nổi bật, ghi điểm nhấn cho tổng thể trang phục. Thiết kế thời trang, chất liệu chắc chắn, tiện dụng cho mọi hoạt động trong ngày.',
-  '["/img/products/4/1 (1).jpg","/img/products/4/1 (2).jpg","/img/products/4/1 (3).jpg","/img/products/4/1 (4).jpg","/img/products/4/1 (5).jpg","/img/products/4/1 (6).jpg"]'::jsonb
-);
 
 -- 5) Tạo Storage bucket "products" để lưu ảnh admin upload sau này.
 insert into storage.buckets (id, name, public)

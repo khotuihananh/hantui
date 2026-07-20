@@ -35,17 +35,20 @@ export default function ProductDetail({ product }) {
   const [selectedSize, setSelectedSize] = useState(null);
   const [selectedVariant, setSelectedVariant] = useState(null);
 
-  // Khi đã chọn đủ màu + size -> tìm đúng biến thể tương ứng và đổi ảnh lớn.
-  // Nếu chưa chọn đủ (thiếu màu hoặc size) -> giữ nguyên ảnh đang xem.
+  // Tìm biến thể khớp với lựa chọn hiện tại để đổi ảnh lớn. Biến thể có
+  // thể chỉ khai báo màu, chỉ khai báo size, hoặc cả 2 - nên chỉ so khớp
+  // theo những thuộc tính mà biến thể đó thực sự có.
   useEffect(() => {
-    if (selectedColor && selectedSize) {
-      const match = variants.find(
-        (v) => v.color === selectedColor && v.size === selectedSize,
-      );
-      setSelectedVariant(match || null);
-    } else {
+    if (!selectedColor && !selectedSize) {
       setSelectedVariant(null);
+      return;
     }
+    const match = variants.find((v) => {
+      const colorOk = v.color ? v.color === selectedColor : !selectedColor;
+      const sizeOk = v.size ? v.size === selectedSize : !selectedSize;
+      return colorOk && sizeOk;
+    });
+    setSelectedVariant(match || null);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedColor, selectedSize]);
 

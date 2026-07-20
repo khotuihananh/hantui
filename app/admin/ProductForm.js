@@ -101,8 +101,11 @@ export default function ProductForm({ product = null, onDone }) {
 
   function addVariant() {
     setVariantError("");
-    if (!variantColor || !variantSize) {
-      setVariantError("Chọn đủ màu và kích thước cho biến thể.");
+    // Chỉ cần chọn màu HOẶC size (không cần đồng thời cả 2) - giống cách
+    // các trang thương mại điện tử cho phép biến thể độc lập theo từng
+    // thuộc tính (ví dụ chỉ theo màu, hoặc chỉ theo size).
+    if (!variantColor && !variantSize) {
+      setVariantError("Chọn màu hoặc kích thước cho biến thể.");
       return;
     }
     if (!variantImage || variantImage.status !== "done") {
@@ -458,7 +461,7 @@ export default function ProductForm({ product = null, onDone }) {
                   }}
                 />
                 <div style={{ fontSize: 12, marginTop: 4 }}>
-                  {v.color} / {v.size}
+                  {[v.color, v.size].filter(Boolean).join(" / ")}
                 </div>
                 <button
                   type="button"
@@ -520,8 +523,10 @@ export default function ProductForm({ product = null, onDone }) {
           </p>
         )}
         {variantError && <div className="admin-error">{variantError}</div>}
-        {colors.length === 0 && (
-          <p className="admin-note">Thêm ít nhất 1 màu ở trên để tạo biến thể.</p>
+        {colors.length === 0 && sizes.length === 0 && (
+          <p className="admin-note">
+            Thêm ít nhất 1 màu hoặc 1 kích thước ở trên để tạo biến thể.
+          </p>
         )}
       </div>
 
