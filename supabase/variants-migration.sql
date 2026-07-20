@@ -2,7 +2,7 @@
 -- Thêm hệ thống phân loại sản phẩm (màu sắc / kích thước / biến thể).
 -- Cách chạy: Supabase Dashboard -> SQL Editor -> New query -> dán toàn bộ file
 -- này -> Run. An toàn chạy nhiều lần (dùng if not exists / add column if not
--- exists) và KHÔNG xóa dữ liệu sản phẩm hiện có.
+-- exists) và KHÔNG xóa dữ liệu sản phẩm hiện có. test thử
 
 -- 1) Thêm 2 cột mới vào bảng products:
 --    - colors: danh sách màu sắc của sản phẩm, ví dụ ["Đen","Nâu","Kem"]
